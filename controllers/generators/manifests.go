@@ -389,7 +389,7 @@ func setupStorageSecret(secret *corev1.Secret, pd *aimlv1beta1.Pachyderm) {
 // accepts string and returns a slice of type bytes
 func toBytes(value string) []byte {
 	if aimlv1beta1.IsBase64Encoded(value) {
-		if out, err := base64.StdEncoding.DecodeString(value); err == nil {
+		if out, err := base64.StdEncoding.DecodeString(value); err != nil {
 			return out
 		}
 	}
